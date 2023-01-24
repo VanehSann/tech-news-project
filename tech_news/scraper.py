@@ -9,9 +9,7 @@ from tech_news.database import create_news
 # Requisito 1
 def fetch(url):
     try:
-        response = requests.get(
-            url,
-            headers={"user-agent": "Fake user-agent"})
+        response = requests.get(url, headers={"user-agent": "Fake user-agent"})
         time.sleep(1)
         response.raise_for_status()
     except (requests.HTTPError, requests.ReadTimeout):
@@ -45,21 +43,20 @@ def scrape_news(html_content):
     comments_count = 0
     summary = selector.css(
         "div.entry-content > p:first-of-type *::text"
-        ).getall()
+    ).getall()
     summary = "".join(summary).strip()
     tags = selector.css("section.post-tags a::text").getall()
     category = selector.css("a.category-style span.label::text").get()
     newsList = {
-            "url": url,
-            "title": title,
-            "writer": writer,
-            "summary": summary,
-            "comments_count": comments_count,
-            "timestamp": timestamp,
-            "tags": tags,
-            "category": category,
-
-        }
+        "url": url,
+        "title": title,
+        "writer": writer,
+        "summary": summary,
+        "comments_count": comments_count,
+        "timestamp": timestamp,
+        "tags": tags,
+        "category": category,
+    }
     return newsList
 
 

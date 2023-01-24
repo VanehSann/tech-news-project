@@ -5,7 +5,7 @@ from tech_news.database import search_news
 
 # Requisito 6
 def search_by_title(title):
-    news = search_news({"title": {"$regex": title, '$options': 'i'}})
+    news = search_news({"title": {"$regex": title, "$options": "i"}})
     result = []
     for item in news:
         result.append((item["title"], item["url"]))
@@ -27,7 +27,7 @@ def search_by_date(date):
 
 # Requisito 8
 def search_by_tag(tag):
-    news = search_news({"tags": {"$regex": tag, '$options': 'i'}})
+    news = search_news({"tags": {"$regex": tag, "$options": "i"}})
     result = []
     for item in news:
         result.append((item["title"], item["url"]))
@@ -36,7 +36,7 @@ def search_by_tag(tag):
 
 # Requisito 9
 def search_by_category(category):
-    news = search_news({"category": {"$regex": category, '$options': 'i'}})
+    news = search_news({"category": {"$regex": category, "$options": "i"}})
     result = []
     for item in news:
         result.append((item["title"], item["url"]))
